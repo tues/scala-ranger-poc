@@ -18,6 +18,7 @@ lazy val exampleTypes = project
   .settings(moduleName := "example-types")
   .settings(buildSettings: _*)
   .settings(macroBuildSettings: _*)
+  .settings(testBuildSettings: _*)
   .dependsOn(core)
 
 run := (run in Compile in example).evaluated
@@ -29,4 +30,8 @@ lazy val buildSettings = Seq(
 lazy val macroBuildSettings = Seq(
   libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.value,
   addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
+)
+
+lazy val testBuildSettings = Seq(
+  libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
 )

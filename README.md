@@ -53,7 +53,6 @@ Additionally, an implicit conversion from your range-constrained type to the bas
 
 ## TODO
 
- - Tests (need tests which check for compilation errors)
  - Cleaner macro-generating code
  - Predefined operators for resulting types
  - Better examples
