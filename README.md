@@ -41,7 +41,7 @@ Currently, Ranger is using macros to do all the magic. In fact, `ranger.constrai
  2. Compile your types defined in terms of `ranger.constrained` macro (project `example-types`)
  3. Final compilation of your program using those constrained types (project `example`)
 
-Steps 1 and 2 require adding Macro Paradise as a compiler plugin. Look at `build.sbt` and `project/Build.scala` for reference.
+Steps 1 and 2 require adding Macro Paradise as a compiler plugin. Look at `build.sbt` for reference.
 
 It's very likely it would be better to implement Ranger as a compiler plugin. However, I couldn't resist the fun of implementing macro-generating macros. Please forgive me.
 

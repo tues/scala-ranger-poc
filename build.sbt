@@ -3,21 +3,30 @@ scalaVersion in ThisBuild := "2.11.8"
 
 lazy val core = project
   .in(file("core"))
-  .settings(CommonSettings.build: _*)
-  .settings(CommonSettings.macroBuild: _*)
+  .settings(buildSettings: _*)
+  .settings(macroBuildSettings: _*)
   .settings(moduleName := "ranger")
 
 lazy val example = project
   .in(file("example"))
   .settings(moduleName := "example")
-  .settings(CommonSettings.build: _*)
+  .settings(buildSettings: _*)
   .dependsOn(exampleTypes)
 
 lazy val exampleTypes = project
   .in(file("example-types"))
   .settings(moduleName := "example-types")
-  .settings(CommonSettings.build: _*)
-  .settings(CommonSettings.macroBuild: _*)
+  .settings(buildSettings: _*)
+  .settings(macroBuildSettings: _*)
   .dependsOn(core)
 
 run := (run in Compile in example).evaluated
+
+lazy val buildSettings = Seq(
+  scalacOptions ++= Seq("-deprecation", "-feature")
+)
+
+lazy val macroBuildSettings = Seq(
+  libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.value,
+  addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
+)
