@@ -15,4 +15,7 @@ package object types {
   @constrained class Celsius    extends Double(-273.15 to Double.MaxValue)
   @constrained class Fahrenheit extends Double(-459.67 to Double.MaxValue)
 
+  @constrained class Digit  extends Char('0' to '9')
+  @constrained class Letter extends Char('a' to 'z')
+
 }

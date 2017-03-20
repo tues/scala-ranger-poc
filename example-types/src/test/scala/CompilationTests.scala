@@ -63,4 +63,32 @@ class CompilationTests extends FlatSpec {
     assertDoesNotCompile("Celsius(Math.random())")
   }
 
+  "Letter" should "accept value within range" in {
+    assertCompiles("Letter('s')")
+  }
+
+  it should "reject value outside range" in {
+    assertDoesNotCompile("Letter('!')")
+  }
+
+  it should "accept minimum value" in {
+    assertCompiles("Letter('a')")
+  }
+
+  it should "accept maximum value" in {
+    assertCompiles("Letter('z')")
+  }
+
+  it should "accept constant-folded value within range" in {
+    assertCompiles("Letter('f' + 1)")
+  }
+
+  it should "reject constant-folded value outside range" in {
+    assertDoesNotCompile("Letter('a' - 1)")
+  }
+
+  it should "reject values unknown at compilation time" in {
+    assertDoesNotCompile("Letter(Math.random().toChar)")
+  }
+
 }

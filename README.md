@@ -27,6 +27,8 @@ More examples:
 ```Scala
 @constrained class Hour extends Int(0 to 23)
 @constrained class Celsius extends Double(-273.15 to Double.MaxValue)
+@constrained class Letter extends Char('a' to 'z')
+@constrained class AToZZZZ extends String("a" to "zzzz")
 ```
 
 However, please bear in mind that **this is just a proof of concept**. You shouldn't use Ranger in production code yet, probably. Actually, this is just what I got after a few hours of Sunday hacking. It's working, but it may bite you... or eat your cat. You have been warned.
